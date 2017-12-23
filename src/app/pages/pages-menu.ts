@@ -61,6 +61,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: '微信公众号',
+    icon: 'nb-compose',
+    children: [
+      {
+        title: '消息管理',
+        link: '/pages/wx/message',
+      },
+      {
+        title: '菜单管理',
+        link: '/pages/wx/menu',
+      },
+    ],
+  },
+  {
     title: 'Components',
     icon: 'nb-gear',
     children: [
