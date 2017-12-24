@@ -14,7 +14,7 @@ import { NbEmailPassAuthProvider, NbAuthModule } from '@nebular/auth';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ThemeModule } from './@theme/theme.module';
+import { ThemeModule, Configs } from './@theme';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthGuard } from './auth-guard.service';
@@ -35,21 +35,26 @@ import { AuthGuard } from './auth-guard.service';
         email: {
           service: NbEmailPassAuthProvider,
           config: {
-            baseEndpoint: 'http://zodream.localhost:8080/api.php/v1',
+            baseEndpoint: Configs.host,
             login: {
-              endpoint: '/auth/sign-in',
+              endpoint: 'auth/home/login',
+              method: 'post',
             },
             register: {
-              endpoint: '/auth/sign-up',
+              endpoint: 'auth/register',
+              method: 'post',
             },
             logout: {
-               endpoint: '/auth/sign-out',
+               endpoint: 'auth/logout',
+               method: 'post',
              },
              requestPass: {
-               endpoint: '/auth/request-pass',
+               endpoint: 'auth/password/request',
+               method: 'post',
              },
              resetPass: {
-               endpoint: '/auth/reset-pass',
+               endpoint: 'auth/password/reset',
+               method: 'post',
              },
            },
         },
