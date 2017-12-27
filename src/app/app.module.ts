@@ -37,7 +37,7 @@ import { AuthGuard } from './auth-guard.service';
           config: {
             baseEndpoint: Configs.host,
             login: {
-              endpoint: 'auth/home/login',
+              endpoint: 'auth/login',
               method: 'post',
             },
             register: {

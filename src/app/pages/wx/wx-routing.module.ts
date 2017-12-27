@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WxComponent } from './wx.component';
 import { MenuComponent } from './menu/menu.component';
 import { MessageComponent } from './message/message.component';
+import { MediaComponent } from './media/media.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +15,9 @@ const routes: Routes = [{
   }, {
     path: 'menu',
     component: MenuComponent,
+  }, {
+    path: 'media',
+    component: MediaComponent,
   }],
 }];
 
@@ -32,5 +36,6 @@ export class WxRoutingModule {
 export const routedComponents = [
   WxComponent,
   MenuComponent,
-  MessageComponent
+  MessageComponent,
+  MediaComponent
 ];

@@ -2695,8 +2695,6 @@
 }
 
 .phone-box {
-    position: absolute;
-    left: 50px;
     .marvel-device .screen {
         background: #fff;
         .bottom-menu {
@@ -2720,7 +2718,11 @@
                     display: table-row;
                     li {
                         line-height: 50px;
-                        list-style: none;
+						list-style: none;
+						span {
+							text-align: center;
+							display: block;
+						}
                         ul {
                             position: absolute;
                             bottom: 62px;
