@@ -32,6 +32,9 @@ const routes: Routes = [{
     path: 'wx',
     loadChildren: './wx/wx.module#WxModule',
   }, {
+    path: 'disk',
+    loadChildren: './disk/disk.module#DiskModule',
+  }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule',
   }, {

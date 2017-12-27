@@ -1,0 +1,365 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="list-group menu">
+        <a routerLink="/pages/disk" class="list-group-item active">
+          <span class="zd_all"></span>全部文件
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_img"></span>图片
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_doc"></span>文档
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_video"></span>视频
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_bt"></span>种子
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_music"></span>音乐
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_other"></span>其它
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_share"></span>我的分享
+        </a>
+        <a routerLink="/pages/disk" class="list-group-item">
+          <span class="zd_trash"></span>回收站
+        </a>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+          style="width: 40%">
+          <span class="sr-only">40% Complete (success)</span>
+        </div>
+      </div>
+    </div>
+    <div id="content" class="col-md-10">
+      <div class="row">
+        <div class="dropdown col-md-2">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="true">
+            <span class="glyphicon glyphicon-open"></span>
+            上传
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li>
+              <a href="#" class="uploadFile">上传文件</a>
+            </li>
+            <li>
+              <a href="#">上传文件夹</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-default col-md-2" data-toggle="modal" data-target="#createModal">
+          <span class="glyphicon glyphicon-plus"></span>新建文件夹</button>
+        <div class="col-md-offset-6 col-md-2 view-mode">
+          <button (click)="refresh()">
+            <span class="glyphicon glyphicon-refresh"></span>
+          </button>
+          <button [ngClass]="{'active': isList}" (click)="isList = true">
+            <span class="glyphicon glyphicon-th-list"></span>
+          </button>
+          <button [ngClass]="{'active': !isList}" (click)="isList = false">
+            <span class="glyphicon glyphicon-th-large"></span>
+          </button>
+        </div>
+      </div>
+      <div class="row zd_crumb">
+        <div class="col-xs-2" *ngIf="crumb.length > 1">
+          <a href="#" (click)="goBack()">返回上一级</a> |
+        </div>
+        <div class="col-xs-10">
+          <ol class="breadcrumb">
+            <li *ngFor="let item of crumb" [ngClass]="{'active': index == crumb.length - 1}">
+              <a href="#" (click)="goLevel(item)" *ngIf="index < crumb.length - 1">{{item.name}}</a>
+              <span *ngIf="index == crumb.length - 1">{{item.name}}</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="header">
+        <div *ngIf="isList && checkCount < 1" class="row">
+          <div class="col-md-1">
+            <span class="checkbox" (click)="checkAll()" [ngClass]="{'checked': isAllChecked}"></span>
+          </div>
+          <div class="col-md-6" (click)="setOrder('name')">
+            <span>文件名</span>
+            <span *ngIf="sort == 'name' && order > 0" class="glyphicon glyphicon-arrow-up"></span>
+            <span *ngIf="sort == 'name' && order < 0" class="glyphicon glyphicon-arrow-down"></span>
+          </div>
+          <div class="col-md-2" (click)="setOrder('size')">
+            <span>大小</span>
+            <span *ngIf="sort == 'size' && order > 0" class="glyphicon glyphicon-arrow-up"></span>
+            <span *ngIf="sort == 'size' && order < 0" class="glyphicon glyphicon-arrow-down"></span>
+          </div>
+          <div class="col-md-3" (click)="setOrder('update_at')">
+            <span>修改时间</span>
+            <span *ngIf="sort == 'update_at' && order > 0" class="glyphicon glyphicon-arrow-up"></span>
+            <span *ngIf="sort == 'update_at' && order < 0" class="glyphicon glyphicon-arrow-down"></span>
+          </div>
+        </div>
+        <div *ngIf="!isList && checkCount < 1" class="row">
+          <div class="col-md-1">
+            <span class="checkbox" (click)="checkAll()" [ngClass]="{'checked': isAllChecked}"></span>
+          </div>
+        </div>
+        <div *ngIf="checkCount > 0" class="row">
+          <div class="col-md-1">
+            <span class="checkbox" (click)="checkAll()" [ngClass]="{'checked': isAllChecked}"></span>
+          </div>
+          <div class="col-md-3">
+            已选中 {{ checkCount }} 个文件/文件夹
+          </div>
+          <div class="col-md-8">
+            <button (click)="shareAll()" class="btn btn-default">
+              <span class="glyphicon glyphicon-share"></span>
+              分享
+            </button>
+            <button (click)="downloadAll()" class="btn btn-default">
+              <span class="glyphicon glyphicon-download-alt"></span>
+              下载
+            </button>
+            <button (click)="deleteAll()" class="btn btn-default">
+              <span class="glyphicon glyphicon-trash"></span>
+              删除
+            </button>
+            <button (click)="moveAll()" class="btn btn-default">
+              <span class="glyphicon glyphicon-copy"></span>
+              复制到
+            </button>
+            <button (click)="copyAll()" class="btn btn-default">
+              <span class="glyphicon glyphicon-move"></span>
+              移动到
+            </button>
+            <button (click)="rename()" class="btn btn-default">
+              <span class="glyphicon glyphicon-pencil"></span>
+              重命名
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- END HEADER -->
+      <div class="body">
+        <div *ngIf="isList" class="zd_list">
+          <div *ngFor="let item of files | orderBy:sort:order" (click)="check(item)" class="row">
+            <div class="col-md-1">
+              <span class="checkbox" [ngClass]="{'checked': item.checked}"></span>
+            </div>
+            <div (click).stop="enter(item)" class="col-md-6">
+              <span [ngClass]="{'zd_s_dir': item.is_dir == 1, 'zd_s_file': item.is_dir != 1}"></span>
+              <span>{{item.name}}</span>
+            </div>
+            <div class="col-md-2">
+              <span>{{item.size | size}}</span>
+            </div>
+            <div class="col-md-3">
+              <span>{{item.update_at | timeAgo}}</span>
+              <div class="zd_tool">
+                <span (click)="share(item)" class="glyphicon glyphicon-share"></span>
+                <span (click)="download(item)" class="glyphicon glyphicon-download-alt"></span>
+                <span (click)="move(item)" class="glyphicon glyphicon-move"></span>
+                <span (click)="copy(item)" class="glyphicon glyphicon-copy"></span>
+                <span (click)="rename(item)" class="glyphicon glyphicon-pencil"></span>
+                <span (click)="delete(item)" class="glyphicon glyphicon-trash"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isList" class="zd_grid">
+        <div class="row">
+          <div *ngFor="let item of files" (click)="check(item)" class="col-md-2">
+            <div [ngClass]="{'zd_dir': item.is_dir == 1, 'zd_file': item.is_dir != 1}">
+              <span class="checkbox" [ngClass]="{'checked': item.checked}"></span>
+            </div>
+            <div class="zd_name">
+              <a href="#" (click).stop="enter(item)">{{item.name}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="loadEffect">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="upload" class="zd_upload" [ngClass]="{'min': mode == 1, 'max': mode == 2}">
+  <div class="head">
+    <span>{{ uploadTitle }}</span>
+    <span *ngIf="mode != 2" (click)="mode = 2" class="glyphicon glyphicon-resize-full"></span>
+    <span *ngIf="mode != 1" (click)="mode = 1" class="glyphicon glyphicon-resize-small"></span>
+    <span (click)="mode = 0" class="glyphicon glyphicon-remove"></span>
+  </div>
+  <div class="body">
+    <div class="row">
+      <div class="col-md-4">
+        文件(夹)名
+      </div>
+      <div class="col-md-2">
+        大小
+      </div>
+      <div class="col-md-2">
+        上传目录
+      </div>
+      <div class="col-md-2">
+        状态
+      </div>
+      <div class="col-md-2">
+        操作
+      </div>
+    </div>
+    <div *ngFor="let item of uploadFiles" class="row">
+      <div class="col-md-4">
+        {{item.name}}
+      </div>
+      <div class="col-md-2">
+        {{item.size | size}}
+      </div>
+      <div class="col-md-2">
+        {{item.parent_name}}
+      </div>
+      <div class="col-md-3 status">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: item.process + '%'}">
+
+          </div>
+        </div>
+        <div class="zd_tag">
+          <span>{{item.status | status}}</span>
+          <span *ngIf="item.status == 0 || item.status == 2">{{ item.process }}%</span>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <span (click).stop="deleteUpload(index)" class="glyphicon glyphicon-trash"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="createModalLabel">新建文件夹</h4>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text" placeholder="文件夹名">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="create btn btn-primary">确定</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="renameModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="renameModalLabel">重命名</h4>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text" placeholder="文件名">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="rename btn btn-primary">确定</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="shareModalLabel">分享文件</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#link" aria-controls="link" role="tab" data-toggle="tab">链接分享</a>
+          </li>
+          <li role="presentation">
+            <a href="#friend" aria-controls="friend" role="tab" data-toggle="tab">分享给好友</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="link">
+            <div class="row">
+              <div class="col-md-4">
+                <button class="btn btn-primary" (click)="create">创建公开链接</button>
+              </div>
+              <div class="col-md-8">
+                <p>（文件会出现在你的分享主页，其他人都能查看下载）</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <button class="btn btn-primary" (click)="create('protected')">创建私密链接</button>
+              </div>
+              <div class="col-md-8">
+                <p>（只有分享的好友能看到，其他人都看不到）</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <p class="text-success">{{ message }}</p>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="friend">
+            <div class="row">
+              <div class="col-md-5">
+                <select class="form-control" multiple size="12">
+
+                </select>
+              </div>
+              <div class="col-md-2" style="padding-top: 90px;">
+                <button class="btn btn-primary">&gt;&gt;&gt;</button>
+                <button class="btn btn-primary">&lt;&lt;&lt;</button>
+              </div>
+              <div class="col-md-5">
+                <input class="form-control" type="text" placeholder="请输入姓名回车键添加">
+                <select class="form-control" multiple size="10">
+
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">分享</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>

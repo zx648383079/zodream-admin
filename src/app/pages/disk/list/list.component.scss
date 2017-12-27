@@ -1,0 +1,434 @@
+.menu .list-group-item {
+    position: relative;
+    display: block;
+    height: 31px;
+    margin: 0 auto;
+    padding-left: 35px;
+    cursor: pointer;
+    &.active {
+      background-color: rgba(200, 200, 200, 0.5);
+    }
+  }
+  
+  .zd_all,
+  .zd_img,
+  .zd_bt,
+  .zd_video,
+  .zd_music,
+  .zd_other,
+  .zd_doc {
+    width: 23px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    margin: 0;
+    background: url("../../../../assets/images/zd.png") 0 0 no-repeat;
+  }
+  
+  .list-group-item:hover .zd_all {
+    background-position: -23px 0;
+  }
+  
+  .zd_img {
+    background-position: 0 -22px;
+  }
+  
+  .list-group-item:hover .zd_img {
+    background-position: -23px -22px;
+  }
+  
+  .zd_doc {
+    background-position: 0 -44px;
+  }
+  
+  .list-group-item:hover .zd_doc {
+    background-position: -23px -44px;
+  }
+  
+  .zd_music {
+    background-position: 0 -66px;
+  }
+  
+  .list-group-item:hover .zd_music {
+    background-position: -23px -66px;
+  }
+  
+  .zd_video {
+    background-position: 0 -88px;
+  }
+  
+  .list-group-item:hover .zd_video {
+    background-position: -23px -88px;
+  }
+  
+  .zd_bt {
+    background-position: 0 -201px;
+  }
+  
+  .list-group-item:hover .zd_bt {
+    background-position: -23px -201px;
+  }
+  
+  .zd_other {
+    background-position: 0 -177px;
+  }
+  
+  .list-group-item:hover .zd_other {
+    background-position: -23px -177px;
+  }
+  
+  .zd_share,
+  .zd_trash {
+    width: 23px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    margin: 0;
+    background: url("../../../../assets/images/zd_t.png") 0 0 no-repeat;
+  }
+  
+  .list-group-item:hover .zd_share {
+    background-position: -23px 0;
+  }
+  
+  .zd_trash {
+    background-position: 0 -22px;
+  }
+  
+  .list-group-item:hover .zd_trash {
+    background-position: -23px -22px;
+  }
+  
+  .view-mode .active {
+    border: none;
+    background: green;
+  }
+  
+  .zd_list .checkbox {
+    cursor: default;
+    display: block;
+    height: 30px;
+    left: 20px;
+    line-height: 30px;
+    position: absolute;
+    z-index: 1;
+    text-align: left;
+    text-indent: 10px;
+    top: 0;
+    width: 32px;
+    margin: 0;
+    zoom: 1;
+    background: url(../../../../assets/images/checkbox.png) 9px 9px no-repeat;
+  }
+  
+  .header {
+    .checkbox {
+      cursor: default;
+      display: block;
+      height: 30px;
+      left: 20px;
+      line-height: 30px;
+      position: absolute;
+      z-index: 1;
+      text-align: left;
+      text-indent: 10px;
+      top: 0;
+      width: 32px;
+      margin: 0;
+      zoom: 1;
+      background: url(../../../../assets/images/checkbox.png) 9px 9px no-repeat;
+      left: 35px;
+      top: 5px;
+    }
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 900;
+    background: #f5f5f5;
+    .row>div:hover {
+      background-color: rgba(100, 255, 100, 0.5);
+    }
+  }
+  
+  .zd_list {
+    .checkbox.checked,
+    .checked .checkbox {
+      background-position: -31px 9px;
+    }
+  }
+  
+  .header .checkbox.checked {
+    background-position: -31px 9px;
+  }
+  
+  .zd_list>.row {
+    line-height: 30px;
+  }
+  
+  .zd_grid {
+    .checkbox {
+      background: url(../../../../assets/images/checkbox.png) 6px -36px no-repeat;
+      position: absolute;
+      top: -18px;
+      left: -8px;
+      height: 30px;
+      width: 30px;
+      display: none;
+      &.checked {
+        display: block;
+        background-position: -30px -36px;
+      }
+    }
+    .checked .checkbox {
+      display: block;
+      background-position: -30px -36px;
+    }
+  }
+  
+  .zd_list .row {
+    >.col-md-3>div {
+      display: none;
+    }
+    margin: 0;
+    &:hover {
+      background-color: rgba(200, 200, 200, 0.5);
+      >.col-md-3>span {
+        display: none;
+      }
+      .zd_tool {
+        display: block;
+      }
+    }
+    .zd_tool span {
+      font-size: 20px;
+      margin-right: 10px;
+      &:hover {
+        color: #f00;
+      }
+    }
+    >.col-md-3 button {
+      background: transparent;
+      height: 30px;
+      border: none;
+    }
+  }
+  
+  .zd_dir {
+    background: url(../../../../assets/images/grid.png) 16px -77px no-repeat;
+  }
+  
+  .zd_file {
+    background: url(../../../../assets/images/grid.png) 16px -77px no-repeat;
+    background-position: 20px 15px;
+  }
+  
+  .zd_s_dir {
+    cursor: default;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background: url(../../../../assets/images/listIcon.png) 0 -30px no-repeat;
+  }
+  
+  .zd_s_file {
+    cursor: default;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background: url(../../../../assets/images/listIcon.png) 0 -30px no-repeat;
+    background-position: 0 0;
+  }
+  
+  .zd_grid .col-md-2 {
+    >div:first-child {
+      position: relative;
+      margin: 0 auto;
+      width: 90px;
+      height: 92px;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    &:hover>div:first-child,
+    &.active>div:first-child {
+      border: 2px solid #2e80dc;
+    }
+    &:hover .checkbox,
+    &.active .checkbox {
+      display: block;
+    }
+    .zd_name {
+      display: block;
+      padding: 5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+    }
+  }
+  
+  .loadEffect {
+    width: 100px;
+    height: 100px;
+    display: none;
+    position: relative;
+    margin: 50px auto 0;
+    span {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      position: absolute;
+      -webkit-animation: load 1.04s ease infinite;
+      &:nth-child(1) {
+        left: 0;
+        top: 50%;
+        margin-top: -8px;
+        -webkit-animation-delay: 0.13s;
+      }
+      &:nth-child(2) {
+        left: 14px;
+        top: 14px;
+        -webkit-animation-delay: 0.26s;
+      }
+      &:nth-child(3) {
+        left: 50%;
+        top: 0;
+        margin-left: -8px;
+        -webkit-animation-delay: 0.39s;
+      }
+      &:nth-child(4) {
+        top: 14px;
+        right: 14px;
+        -webkit-animation-delay: 0.52s;
+      }
+      &:nth-child(5) {
+        right: 0;
+        top: 50%;
+        margin-top: -8px;
+        -webkit-animation-delay: 0.65s;
+      }
+      &:nth-child(6) {
+        right: 14px;
+        bottom: 14px;
+        -webkit-animation-delay: 0.78s;
+      }
+      &:nth-child(7) {
+        bottom: 0;
+        left: 50%;
+        margin-left: -8px;
+        -webkit-animation-delay: 0.91s;
+      }
+      &:nth-child(8) {
+        bottom: 14px;
+        left: 14px;
+        -webkit-animation-delay: 1.04s;
+      }
+    }
+  }
+  
+  @-webkit-keyframes load {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+  
+  .zd_upload {
+    width: 600px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 0;
+    overflow: hidden;
+    display: none;
+    transition: height 2s;
+    -moz-transition: height 2s;
+    /* Firefox 4 */
+    -webkit-transition: height 2s;
+    /* Safari 和 Chrome */
+    -o-transition: height 2s;
+    /* Opera */
+    background: #fff;
+    border-radius: 20px 0 0;
+    &.min,
+    &.max {
+      display: block;
+    }
+    &.min {
+      height: 50px;
+    }
+    &.max {
+      height: 400px;
+    }
+    .head {
+      border-radius: 20px 0 0;
+      background: green;
+      height: 50px;
+      text-align: right;
+      font-size: 30px;
+      line-height: 50px;
+      color: #fff;
+      padding: 0 10px;
+      span {
+        &:first-child {
+          float: left;
+          margin-left: 10px;
+        }
+        cursor: pointer;
+      }
+    }
+    .body {
+      padding: 0 16px;
+      overflow: auto;
+      height: 300px;
+      .row {
+        &:first-child {
+          border-bottom: 1px solid #767676;
+        }
+        &:hover {
+          background-color: rgba(200, 200, 200, 0.5);
+          color: #f00;
+        }
+        height: 20px;
+        overflow: hidden;
+        >div {
+          overflow: hidden;
+        }
+      }
+    }
+    .row .status {
+      padding: 0 2px;
+      .progress {
+        margin: 0;
+      }
+      .zd_tag {
+        position: absolute;
+        left: 10px;
+        top: 0;
+        color: #0f0;
+        font-weight: 700;
+      }
+    }
+  }
+  
+  .zd_error {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+  
+  .zd_crumb {
+    background-color: #f5f5f5;
+    height: 36px;
+    margin: 0 0 25px 0;
+    .col-xs-2 {
+      text-align: center;
+      line-height: 36px;
+    }
+  }

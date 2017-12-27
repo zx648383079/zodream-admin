@@ -62,7 +62,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '微信公众号',
-    icon: 'nb-compose',
+    icon: 'fa fa-weixin',
     children: [
       {
         title: '消息管理',
@@ -71,6 +71,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: '菜单管理',
         link: '/pages/wx/menu',
+      },
+    ],
+  },
+  {
+    title: '云盘',
+    icon: 'fa fa-dropbox',
+    children: [
+      {
+        title: '全部文件',
+        link: '/pages/disk/list',
       },
     ],
   },
