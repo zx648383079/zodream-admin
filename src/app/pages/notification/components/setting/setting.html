@@ -1,0 +1,41 @@
+<form class="form-horizontal">
+    <div class="tab">
+        <div class="tab-head">
+            <div [ngClass]="{'active': tabIndex == 0}" (click)="tabIndex = 0">
+                基本设置
+            </div>
+            <div [ngClass]="{'active': tabIndex == 1}" (click)="tabIndex = 1">
+                高级设置
+            </div>
+        </div>
+        <div class="tab-content">
+            <div [ngClass]="{'active': tabIndex == 0}">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
+                    <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div [ngClass]="{'active': tabIndex == 1}">
+                <p>开发中。。。</p>
+                
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-default">保存</button>
+        </div>
+    </div>
+</form>

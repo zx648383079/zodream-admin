@@ -5,7 +5,8 @@ import { ListComponent } from './list/list.component';
 import { DiskRoutingModule, routedComponents } from './disk-routing.module';
 import { ThemeModule } from '../../@theme/index';
 import { HttpClientModule } from '@angular/common/http';
-import { OrderByPipe, TimeAgoPipe, SizePipe, StatusPipe } from '../../@theme/pipes/index';
+import { OrderByPipe, SizePipe, StatusPipe } from '../../@theme/pipes/index';
+import { DiskService } from './disk.service';
 
 @NgModule({
   imports: [
@@ -16,11 +17,11 @@ import { OrderByPipe, TimeAgoPipe, SizePipe, StatusPipe } from '../../@theme/pip
   declarations: [
     ...routedComponents,
     OrderByPipe,
-    TimeAgoPipe,
     SizePipe,
     StatusPipe
   ],
   providers: [
+    DiskService
   ]
 })
 export class DiskModule { }

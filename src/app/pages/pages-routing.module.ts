@@ -35,6 +35,12 @@ const routes: Routes = [{
     path: 'disk',
     loadChildren: './disk/disk.module#DiskModule',
   }, {
+    path: 'message',
+    loadChildren: './message/message.module#MessageModule',
+  }, {
+    path: 'notification',
+    loadChildren: './notification/notification.module#NotificationModule',
+  }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule',
   }, {
