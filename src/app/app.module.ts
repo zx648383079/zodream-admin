@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ThemeModule } from './theme/theme.module';
+import { ThemeModule } from './@theme/theme.module';
 
 @NgModule({
   declarations: [

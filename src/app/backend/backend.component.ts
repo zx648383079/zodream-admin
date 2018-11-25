@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MENU_ITEMS } from './pages-menu';
+import { MENU_ITEMS } from './backend-menu';
 
 @Component({
   selector: 'zo-pages',
@@ -9,7 +9,7 @@ import { MENU_ITEMS } from './pages-menu';
   </zo-layout>
 `,
 })
-export class PagesComponent {
+export class BackendComponent {
 
   menu = MENU_ITEMS;
 }

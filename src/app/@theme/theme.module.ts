@@ -1,6 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TabBarComponent } from './components/tab-bar/tab-bar.component';
+import { RouterModule } from '@angular/router';
 
 // import {
 
@@ -12,10 +14,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // } from './layouts';
 
-const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
+const BASE_MODULES = [
+  CommonModule, 
+  FormsModule,
+  RouterModule,
+  ReactiveFormsModule
+];
 
 const COMPONENTS = [
-
+  TabBarComponent
 ];
 
 const PIPES = [

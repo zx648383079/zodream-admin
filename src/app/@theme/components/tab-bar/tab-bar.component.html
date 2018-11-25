@@ -1,0 +1,10 @@
+<nav class="tab-bar">
+  <ng-container *ngFor="let item of menus">
+    <a *ngIf="item.url" [routerLink]="item.url" [ngClass]="{'active': item.active}">
+      <i class="fa fa-{{ item.icon }}" *ngIf="item.icon"></i>
+      <span>{{ item.name }}</span>
+      <i class="tip" *ngIf="item.count && item.count > 0">{{ item.count }}
+      </i>
+    </a>
+  </ng-container>
+</nav>
