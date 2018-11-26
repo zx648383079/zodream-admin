@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MENU_ITEMS } from './frontend-menu';
 
 @Component({
-  selector: 'zo-pages',
+  selector: 'zo-frontend',
   template: `
   <zo-layout [menu]="menu">
     <router-outlet></router-outlet>

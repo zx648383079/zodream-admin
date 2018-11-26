@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 // } from './layouts';
 
 const BASE_MODULES = [
-  CommonModule, 
+  CommonModule,
   FormsModule,
   RouterModule,
   ReactiveFormsModule

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MENU_ITEMS } from './mobile-menu';
 
 @Component({
-  selector: 'zo-pages',
+  selector: 'zo-mobile',
   template: `
   <router-outlet></router-outlet>
   <zo-tab-bar></zo-tab-bar>

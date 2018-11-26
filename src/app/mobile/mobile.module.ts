@@ -5,11 +5,13 @@ import { MobileRoutingModule } from './mobile-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { ThemeModule } from '../@theme/theme.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     ThemeModule,
+    NgbModule,
     MobileRoutingModule,
   ],
   declarations: [MobileComponent, NotFoundComponent, HomeComponent]

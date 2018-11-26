@@ -16,7 +16,6 @@ import { ThemeModule } from './@theme/theme.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
     ThemeModule.forRoot(),
   ],
   providers: [
