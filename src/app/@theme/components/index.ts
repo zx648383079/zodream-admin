@@ -1,1 +1,1 @@
-// export * from './header/header.component';
+export * from './tab-bar/tab-bar.component';

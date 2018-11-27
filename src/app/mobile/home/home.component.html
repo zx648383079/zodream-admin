@@ -1,6 +1,6 @@
 <header class="top top-search-box">
   <a routerLink="../home" class="logo">
-      <img src="/assets/images/wap_logo.png" alt="">
+      <img src="{{ '/assets/images/wap_logo.png' | asset }}" alt="">
   </a>
   <a class="search-entry" routerLink="../search">
       <i class="fa fa-search"></i>
@@ -20,12 +20,12 @@
   </div>
 
   <div class="menu-box">
-      <?php foreach($cat_list as $item):?>
-      <a href="<?=$this->url('./mobile/search', ['cat_id' => $item->id])?>" class="menu-item">
-          <img class="menu-icon" src="<?=$item->icon?>" alt="">
-          <div class="menu-name"><?=$item->name?></div>
-      </a>
-      <?php endforeach;?>
+      <ng-container *ngFor="let item of categories">
+        <a [routerLink]="['../category', item.id]" class="menu-item">
+            <img class="menu-icon" [src]="item.icon" alt="">
+            <div class="menu-name">{{ item.name }}</div>
+        </a>
+      </ng-container>
   </div>
 
   <div class="goods-list">

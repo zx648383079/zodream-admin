@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { CategoryService } from 'src/app/@theme/services';
+import { ICategory } from 'src/app/@theme/models/category';
 
 @Component({
   selector: 'zo-home',
@@ -14,12 +16,18 @@ export class HomeComponent implements OnInit {
     'https://yanxuan.nosdn.127.net/3693d1b5948a2072fdf3524668e11993.jpg?imageView&quality=75&thumbnail=750x0'
   ];
 
-  constructor(config: NgbCarouselConfig) {
+  categories: ICategory[] = [];
+
+  constructor(config: NgbCarouselConfig,
+    private categoryService: CategoryService) {
     config.showNavigationArrows = false;
     config.interval = 2000;
   }
 
   ngOnInit() {
+    this.categoryService.get().subscribe(res => {
+      this.categories = res;
+    });
   }
 
 }

@@ -1,1 +1,1 @@
-const j = 0;
+export * from './asset.pipe';

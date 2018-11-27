@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://zodream.localhost/open/'
+  apiEndpoint: 'http://zodream.localhost/open/',
+  assetUri: 'http://zodream.localhost'
 };
 
 /*
