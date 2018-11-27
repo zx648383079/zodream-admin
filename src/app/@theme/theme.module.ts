@@ -13,6 +13,8 @@ import { CategoryService, TransferStateService, AuthService } from './services';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TransferStateInterceptor, TokenInterceptor, ResponseInterceptor } from './interceptors';
 import { AuthActions } from './actions';
+import { ProductService } from './services/product.service';
+import { AdService } from './services/ad.service';
 // import {
 
 // } from './layouts';
@@ -34,7 +36,9 @@ const PIPES = [
 
 const SERVICES = [
   CategoryService,
-  AuthService
+  AuthService,
+  ProductService,
+  AdService
 ];
 
 const ACTIONS = [

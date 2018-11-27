@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryService } from 'src/app/@theme/services';
 import { ICategory } from 'src/app/@theme/models/category';
+import { IHomeProduct } from 'src/app/@theme/models/product';
+import { ProductService } from 'src/app/@theme/services/product.service';
+import { AdService } from 'src/app/@theme/services/ad.service';
+import { IAd } from 'src/app/@theme/models/ad';
 
 @Component({
   selector: 'zo-home',
@@ -10,23 +14,29 @@ import { ICategory } from 'src/app/@theme/models/category';
 })
 export class HomeComponent implements OnInit {
 
-  banners: Array<string> = [
-    'https://yanxuan.nosdn.127.net/08c22f34ed0445208c8bbf80cb769d06.jpg?imageView&quality=75&thumbnail=750x0',
-    'https://yanxuan.nosdn.127.net/8271dce9c32d58eb8598c1408acf6132.jpg?imageView&quality=75&thumbnail=750x0',
-    'https://yanxuan.nosdn.127.net/3693d1b5948a2072fdf3524668e11993.jpg?imageView&quality=75&thumbnail=750x0'
-  ];
+  banners: IAd[] = [];
 
   categories: ICategory[] = [];
 
+  data: IHomeProduct;
+
   constructor(config: NgbCarouselConfig,
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private productService: ProductService,
+    private adService: AdService) {
     config.showNavigationArrows = false;
     config.interval = 2000;
   }
 
   ngOnInit() {
+    this.adService.banner().subscribe(res => {
+      this.banners = res;
+    });
     this.categoryService.get().subscribe(res => {
       this.categories = res;
+    });
+    this.productService.home().subscribe(res => {
+      this.data = res;
     });
   }
 
