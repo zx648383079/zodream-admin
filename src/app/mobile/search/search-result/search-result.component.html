@@ -1,0 +1,31 @@
+
+<header class="top">
+  <div class="search-box under-search">
+      <a class="home-btn" routerLink="/mobile">
+          <i class="fa fa-home"></i>
+      </a>
+      <form>
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" name="keywords" [(ngModel)]="keywords" placeholder="搜索">
+          <i class="fa fa-times-circle"></i>
+      </form>
+  </div>
+</header>
+<div class="has-header">
+
+  <div class="goods-list">
+      <div class="item-view" *ngFor="let item of data">
+          <div class="item-img">
+              <a [routerLink]="['../poroduct', item.id]"><img [src]="item.thumb" alt=""></a>
+          </div>
+          <div class="item-title">
+              {{ item.name }}
+          </div>
+          <div class="item-actions">
+              <span class="item-price">{{ item.price | currency: '￥' }}</span>
+              <span>加入购物车</span>
+          </div>
+      </div>
+  </div>
+
+</div>

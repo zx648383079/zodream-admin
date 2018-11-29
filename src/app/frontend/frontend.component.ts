@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MENU_ITEMS } from './frontend-menu';
+import { ThemeService } from '../@theme/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'zo-frontend',
   template: `
-  <zo-layout [menu]="menu">
-    <router-outlet></router-outlet>
-  </zo-layout>
+  <zo-header></zo-header>
+  <router-outlet></router-outlet>
+  <zo-footer></zo-footer>
 `,
 })
-export class FrontendComponent {
+export class FrontendComponent implements OnDestroy {
 
-  menu = MENU_ITEMS;
+  /**
+   *
+   */
+  constructor(
+    private theme: ThemeService,
+    private route: Router
+  ) {
+    if (theme.isMobile()) {
+      route.navigateByUrl('/mobile');
+      return;
+    }
+    this.theme.addClass('yx-theme');
+  }
+
+  ngOnDestroy(): void {
+    this.theme.removeClass('yx-theme');
+  }
 }

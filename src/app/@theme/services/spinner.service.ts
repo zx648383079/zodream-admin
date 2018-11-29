@@ -13,7 +13,7 @@ import { ZO_DOCUMENT } from '../theme.options';
 export class SpinnerService {
 
   private loaders: Promise<any>[] = [];
-  private selector: string = 'zo-global-spinner';
+  private selector = 'zo-global-spinner';
 
   constructor(@Inject(ZO_DOCUMENT) private document) {}
 

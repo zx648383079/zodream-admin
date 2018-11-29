@@ -6,7 +6,9 @@ import { RouterModule } from '@angular/router';
 import {
   TabBarComponent,
   MenuItemComponent,
-  MenuComponent
+  MenuComponent,
+  HeaderComponent,
+  FooterComponent
 } from './components';
 import {
   AssetPipe
@@ -23,11 +25,13 @@ import {
   ProductService,
   CategoryService,
   TransferStateService,
-  AuthService
+  AuthService,
+  ThemeService
 } from './services';
 import {
   DarkComponent
 } from './layouts';
+import { StateService } from './services/state.service';
 
 const BASE_MODULES = [
   CommonModule,
@@ -40,7 +44,9 @@ const COMPONENTS = [
   TabBarComponent,
   MenuComponent,
   MenuItemComponent,
-  DarkComponent
+  DarkComponent,
+  HeaderComponent,
+  FooterComponent
 ];
 
 const PIPES = [
@@ -51,7 +57,9 @@ const SERVICES = [
   CategoryService,
   AuthService,
   ProductService,
-  AdService
+  AdService,
+  ThemeService,
+  StateService
 ];
 
 const ACTIONS = [

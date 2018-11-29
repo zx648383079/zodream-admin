@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import './common';
+@import './dark';
+.mobile-theme {
+    @import './mobile';
+}
+.yx-theme {
+    @import './yx';
+}

@@ -1,0 +1,42 @@
+<header class="top">
+  <div class="search-box">
+      <form>
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" name="keywords" [(ngModel)]="keywords" (keyup)="onKeyUp($event)" placeholder="搜索">
+          <i class="fa fa-times-circle"></i>
+      </form>
+      <a class="cancel-btn" href="javascript:history.back();">取消</a>
+  </div>
+</header>
+<div class="has-header">
+  <div class="search-recommend-box">
+      <div class="panel">
+          <div class="panel-header">
+              <span>历史记录</span>
+              <i class="fa fa-trash"></i>
+          </div>
+          <div class="panel-body">
+              <a href="">111</a>
+              <a href="">111111111</a>
+          </div>
+      </div>
+      <div class="panel">
+          <div class="panel-header">
+              <span>热门搜索</span>
+          </div>
+          <div class="panel-body">
+              <a href="">111</a>
+              <a href="">111111111</a>
+          </div>
+      </div>
+  </div>
+  <ul class="search-tip-box">
+      <li>
+          <a href="">11111111111</a>
+      </li>
+      <li>
+          <a href="">11111111111</a>
+      </li>
+  </ul>
+
+</div>
