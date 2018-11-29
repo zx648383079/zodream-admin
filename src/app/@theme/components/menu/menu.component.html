@@ -1,0 +1,5 @@
+<ul>
+    <ng-container *ngFor="let item of menus">
+        <zo-menu-item [menuItem]="item" (selectItem)="tapItem(item)"></zo-menu-item>
+    </ng-container>
+</ul>

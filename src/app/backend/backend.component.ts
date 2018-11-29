@@ -4,9 +4,9 @@ import { MENU_ITEMS } from './backend-menu';
 @Component({
   selector: 'zo-backend',
   template: `
-  <zo-layout [menu]="menu">
+  <zo-dark-layout [menus]="menu">
     <router-outlet></router-outlet>
-  </zo-layout>
+  </zo-dark-layout>
 `,
 })
 export class BackendComponent {

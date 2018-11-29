@@ -1,1 +1,1 @@
-const i = 0;
+export * from './dark/dark.component';

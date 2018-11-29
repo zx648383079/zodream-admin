@@ -4,20 +4,30 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {
-  TabBarComponent
+  TabBarComponent,
+  MenuItemComponent,
+  MenuComponent
 } from './components';
 import {
   AssetPipe
 } from './pipes';
-import { CategoryService, TransferStateService, AuthService } from './services';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TransferStateInterceptor, TokenInterceptor, ResponseInterceptor } from './interceptors';
+import {
+  TransferStateInterceptor,
+  TokenInterceptor,
+  ResponseInterceptor
+} from './interceptors';
 import { AuthActions } from './actions';
-import { ProductService } from './services/product.service';
-import { AdService } from './services/ad.service';
-// import {
-
-// } from './layouts';
+import {
+  AdService,
+  ProductService,
+  CategoryService,
+  TransferStateService,
+  AuthService
+} from './services';
+import {
+  DarkComponent
+} from './layouts';
 
 const BASE_MODULES = [
   CommonModule,
@@ -27,7 +37,10 @@ const BASE_MODULES = [
 ];
 
 const COMPONENTS = [
-  TabBarComponent
+  TabBarComponent,
+  MenuComponent,
+  MenuItemComponent,
+  DarkComponent
 ];
 
 const PIPES = [
