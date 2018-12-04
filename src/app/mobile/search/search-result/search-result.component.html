@@ -7,12 +7,16 @@
       <form>
           <i class="fa fa-search" aria-hidden="true"></i>
           <input type="text" name="keywords" [(ngModel)]="keywords" placeholder="搜索">
-          <i class="fa fa-times-circle"></i>
+          <i class="fa fa-times-circle" (click)="tapGoSearch()"></i>
       </form>
   </div>
 </header>
-<div class="has-header">
-
+<div class="has-header" 
+zoInfiniteScroll
+(scrollEnd)="onScrollEnd()"
+[offset]="30"
+[debounce]="50"
+[disabled]="has_more">
   <div class="goods-list">
       <div class="item-view" *ngFor="let item of data">
           <div class="item-img">

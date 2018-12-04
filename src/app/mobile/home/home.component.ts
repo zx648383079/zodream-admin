@@ -30,8 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.adService.banner().subscribe(res => {
-      console.log(res);
-      //this.banners = res;
+      this.banners = res;
     });
     this.categoryService.get().subscribe(res => {
       this.categories = res;

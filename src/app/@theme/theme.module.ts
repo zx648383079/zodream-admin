@@ -26,12 +26,16 @@ import {
   CategoryService,
   TransferStateService,
   AuthService,
-  ThemeService
+  ThemeService,
+  SearchService,
+  StateService
 } from './services';
 import {
   DarkComponent
 } from './layouts';
-import { StateService } from './services/state.service';
+import {
+  InfiniteScrollDirective
+} from './directives';
 
 const BASE_MODULES = [
   CommonModule,
@@ -59,17 +63,22 @@ const SERVICES = [
   ProductService,
   AdService,
   ThemeService,
-  StateService
+  StateService,
+  SearchService
 ];
 
 const ACTIONS = [
   AuthActions
 ];
 
+const DIRECTIVES = [
+  InfiniteScrollDirective
+];
+
 @NgModule({
   imports: [...BASE_MODULES],
-  exports: [...BASE_MODULES, ...COMPONENTS, ...PIPES],
-  declarations: [...COMPONENTS, ...PIPES],
+  exports: [...BASE_MODULES, ...COMPONENTS, ...PIPES, ...DIRECTIVES],
+  declarations: [...COMPONENTS, ...PIPES, ...DIRECTIVES],
   providers: [
     ...SERVICES,
     ...ACTIONS,

@@ -2,6 +2,7 @@ export interface IPaging {
     limit:  number;
     offset: number;
     total:  number;
+    more: boolean;
 }
 
 export interface IPage<T> {

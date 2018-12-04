@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import {Md5} from "ts-md5";
+import {Md5} from 'ts-md5';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {

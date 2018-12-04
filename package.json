@@ -30,6 +30,7 @@
     "jsonapi-deserializer": "^0.1.1",
     "ng2-ui-auth": "^9.2.1",
     "ngrx-store-freeze": "^0.2.4",
+    "ngx-infinite-scroll": "^6.0.1",
     "ngx-toastr": "^9.1.1",
     "pace-js": "^1.0.2",
     "reselect": "^4.0.0",

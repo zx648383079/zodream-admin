@@ -9,34 +9,39 @@
   </div>
 </header>
 <div class="has-header">
-  <div class="search-recommend-box">
-      <div class="panel">
-          <div class="panel-header">
-              <span>历史记录</span>
-              <i class="fa fa-trash"></i>
-          </div>
-          <div class="panel-body">
-              <a href="">111</a>
-              <a href="">111111111</a>
-          </div>
-      </div>
-      <div class="panel">
-          <div class="panel-header">
-              <span>热门搜索</span>
-          </div>
-          <div class="panel-body">
-              <a href="">111</a>
-              <a href="">111111111</a>
-          </div>
-      </div>
-  </div>
-  <ul class="search-tip-box">
-      <li>
-          <a href="">11111111111</a>
-      </li>
-      <li>
-          <a href="">11111111111</a>
-      </li>
-  </ul>
+    <ng-container *ngIf="!tip_list || tip_list.length == 0; else elseTemplate">
+        <div class="search-recommend-box" >
+            <div class="panel" *ngIf="history_list && history_list.length > 0">
+                <div class="panel-header">
+                    <span>历史记录</span>
+                    <i class="fa fa-trash" (click)="tapClearHistory()"></i>
+                </div>
+                <div class="panel-body">
+                        <ng-container *ngFor="let item of history_list">
+                        <a (click)="tapKeyword(item)">{{ item }}</a>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="panel" *ngIf="hot_keywords && hot_keywords.length > 0">
+                <div class="panel-header">
+                    <span>热门搜索</span>
+                </div>
+                <div class="panel-body">
+                    <ng-container *ngFor="let item of hot_keywords">
+                        <a (click)="tapKeyword(item)">{{ item }}</a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <ul class="search-tip-box">
+            <li *ngFor="let item of tip_list">
+                    <a (click)="tapKeyword(item)">{{ item }}</a>
+            </li>
+        </ul>
+    </ng-template>
+    
+
 
 </div>

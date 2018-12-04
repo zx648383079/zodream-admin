@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { IPage } from '../models/page';
 import { IProduct, IHomeProduct } from '../models/product';
 import { Observable } from 'rxjs';
@@ -12,8 +12,10 @@ export class ProductService {
   /**
    * get
    */
-  public get(): Observable<IPage<IProduct>> {
-    return this.http.get<IPage<IProduct>>('shop/goods');
+  public get(params?: HttpParams | any): Observable<IPage<IProduct>> {
+    return this.http.get<IPage<IProduct>>('shop/goods', {
+      params: params
+    });
   }
 
   /**

@@ -374,44 +374,7 @@ footer,
     }
 }
 
-.search-tip-box {
-    display: block;
-    padding-left: 10px;
-    background-color: #fff;
-    display: none;
-    li {
-        height: 30px;
-        line-height: 30px;
-        &:not(:last-of-type) {
-            border-bottom: 1px solid #ccc;
-        }
-    }
-}
 
-.search-recommend-box {
-    .panel {
-        padding: 0 10px 10px;
-        background-color: #fff;
-        margin-bottom: 5px;
-        .panel-header {
-            height: 30px;
-            line-height: 30px;
-            .fa {
-                float: right;
-                margin-top: 8px;
-            }
-        }
-        .panel-body {
-            a {
-                border: 1px solid #999;
-                border-radius: 2px;
-                color: #333;
-                padding: 0 2px;
-                line-height: 16px;
-            }
-        }
-    }
-}
 
 .menu-box {
     position: relative;
