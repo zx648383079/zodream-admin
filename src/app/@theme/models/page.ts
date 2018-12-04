@@ -8,3 +8,15 @@ export interface IPage<T> {
     paging: IPaging;
     data:   T[];
 }
+
+export interface IBaseResponse {
+    appid?:        string;
+    sign?:         string;
+    sign_type?:    string;
+    timestamp?:    string;
+    encrypt?:      string;
+    encrypt_type?: string;
+}
+export interface IData<T> extends IBaseResponse {
+    data?:         T[];
+}

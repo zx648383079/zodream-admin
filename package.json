@@ -34,6 +34,7 @@
     "pace-js": "^1.0.2",
     "reselect": "^4.0.0",
     "rxjs": "~6.3.3",
+    "ts-md5": "^1.2.4",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -57,6 +58,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "^3.2.1"
+    "typescript": "^3.1.6"
   }
 }

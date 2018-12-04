@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IAd } from '../models/ad';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { IData } from '../models/page';
 
 @Injectable()
 export class AdService {
@@ -19,6 +21,6 @@ export class AdService {
    * banner
    */
   public banner(): Observable<IAd[]> {
-    return this.http.get<IAd[]>('shop/ad/banner');
+    return this.http.get<IData<IAd>>('shop/ad/banner').pipe(map(res => res.data));
   }
 }
