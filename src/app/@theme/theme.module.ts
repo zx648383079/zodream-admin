@@ -36,6 +36,7 @@ import {
 import {
   InfiniteScrollDirective
 } from './directives';
+import { CanActivateViaAuthGuard } from './guards';
 
 const BASE_MODULES = [
   CommonModule,
@@ -84,6 +85,7 @@ const DIRECTIVES = [
     ...ACTIONS,
     {provide: HTTP_INTERCEPTORS, useClass: TransferStateInterceptor, multi: true},
     TransferStateService,
+    CanActivateViaAuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
   ],

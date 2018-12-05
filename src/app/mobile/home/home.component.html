@@ -28,7 +28,7 @@
     </ng-container>
   </div>
 
-  <div class="panel" *ngIf="data && data.new_products">
+  <div class="panel" *ngIf="data && data.new_products && data.new_products.length > 0">
       <div class="panel-header">最新商品</div>
       <div class="goods-list">
         <div class="item-view" *ngFor="let item of data.new_products">
@@ -46,7 +46,7 @@
       </div>
   </div>
 
-  <div class="panel" *ngIf="data && data.hot_products">
+  <div class="panel" *ngIf="data && data.hot_products && data.hot_products.length > 0">
     <div class="panel-header">热门商品</div>
     <div class="goods-list">
       <div class="item-view" *ngFor="let item of data.hot_products">
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div class="panel" *ngIf="data && data.best_products">
+<div class="panel" *ngIf="data && data.best_products && data.best_products.length > 0">
     <div class="panel-header">推荐商品</div>
     <div class="goods-list">
       <div class="item-view" *ngFor="let item of data.best_products">

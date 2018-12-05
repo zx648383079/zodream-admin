@@ -1,0 +1,55 @@
+<header class="top">
+  <a class="back" href="">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </a>
+  <span class="title">
+    {{ edit_mode ? '整理购物车' : '我的购物车' }}
+  </span>
+  <a class="right" *ngIf="data && data.length > 0">
+      <i class="fa fa-edit" *ngIf="!edit_mode"></i>
+      <i class="fa fa-check" *ngIf="edit_mode"></i>
+  </a>
+</header>
+<div class="has-header">
+  <ng-container *ngIf="data && data.length > 0; else elseTemplate">
+      <div class="cart-box">
+          <div class="swipe-box goods-list">
+              <div class="swipe-row cart-item" *ngFor="let cart of data">
+                  <div class="swipe-content goods-item" *ngFor="let item of cart.goods_list">
+                      <i class="fa check-box"></i>
+                      <div class="goods-img">
+                          <img [src]="item.goods.thumb" alt="">
+                      </div>
+                      <div class="goods-info">
+                          <h4>{{ item.goods.name }}</h4>
+                          <span>{{ item.price }}</span>
+                          <div class="number-box">
+                              <i class="fa fa-minus"></i>
+                              <input type="text" name="" [(ngModel)]="item.amount" min="1">
+                              <i class="fa fa-plus"></i>
+                          </div>
+                      </div>
+                      <div class="actions-right" *ngIf="edit_mode">
+                          <i class="fa fa-trash"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="cart-footer">
+          <i class="fa check-box"></i>
+          <span>全选</span>
+  
+          <div class="cart-amount">
+              <span>0</span>
+              <a href="<?=$this->url('./mobile/cashier')?>" class="btn">结算</a>
+          </div>
+      </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+      <div class="cart-empty">
+          <i class="fa fa-shopping-cart"></i>
+          <p>您的购物车是空的</p>
+      </div>
+  </ng-template>
+</div>

@@ -1,4 +1,4 @@
-import { User } from '../models/user';
+import { IUser } from '../models/user';
 export class AuthActions {
   static LOGIN = 'LOGIN';
   static LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -61,7 +61,7 @@ export class AuthActions {
     return { type: AuthActions.NO_OP };
   }
 
-  getCurrentUserSuccess(user: User) {
+  getCurrentUserSuccess(user: IUser) {
     return {
       type: AuthActions.GET_CURRENT_USER_SUCCESS,
       payload: user

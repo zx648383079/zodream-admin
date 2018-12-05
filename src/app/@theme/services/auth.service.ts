@@ -10,8 +10,10 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HttpRequest } from '@angular/common/http/src/request';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
-import { User } from '../models/user';
+import { IUser } from '../models/user';
 
+
+const USER_KEY = 'user';
 
 @Injectable()
 export class AuthService {
@@ -38,18 +40,19 @@ export class AuthService {
    * @returns Observable<User>
    */
 
-  login({ email, password }): Observable<User> {
-    const params = { data: { attributes: { 'email': email, 'password': password } } };
-    return this.http.post<User>('api/v1/login', params).pipe(
+  login(data: any): Observable<IUser> {
+    return this.http.post<IUser>('auth/login', data).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user, 'user');
-        this.store.dispatch(this.actions.getCurrentUserSuccess(JSON.parse(localStorage.getItem('user'))));
+        this.setTokenInLocalStorage(user, USER_KEY);
+        this.store.dispatch(this.actions.getCurrentUserSuccess(JSON.parse(localStorage.getItem(USER_KEY))));
         this.store.dispatch(this.actions.loginSuccess());
         return user;
       }),
       tap(
-        _ => this.router.navigate(['/']),
-        error => this.toastrService.error(error.error.errors.detail, 'ERROR!')
+        _ => _/*this.router.navigate(['/'])*/,
+        error => {
+          this.toastrService.error(error.error.message, 'ERROR!');
+        }
       ),
       catchError(error => {
         return observableOf(error);
@@ -64,9 +67,9 @@ export class AuthService {
    * @returns Observable<User>
    *
    */
-  register(data: User): Observable<User> {
+  register(data: IUser): Observable<IUser> {
     const params = { data: { type: 'user', attributes: data } };
-    return this.http.post<User>('api/v1/register', params).pipe(
+    return this.http.post<IUser>('api/v1/register', params).pipe(
       map(user => {
         return user;
       }),
@@ -86,7 +89,7 @@ export class AuthService {
    * @param anyUser data
    * @returns Observable<any>
    */
-  forgetPassword(data: User): Observable<any> {
+  forgetPassword(data: IUser): Observable<any> {
     return this.http.post('auth/passwords', { spree_user: data }).pipe(
       map(_ =>
         this.toastrService.success(
@@ -107,7 +110,7 @@ export class AuthService {
    * @param User data
    * @returns Observable<any>
    */
-  updatePassword(data: User): Observable<void | ActiveToast<any>> {
+  updatePassword(data: IUser): Observable<void | ActiveToast<any>> {
     return this.http
       .put(`auth/passwords/${data.id}`, { spree_user: data })
       .pipe(
@@ -192,9 +195,9 @@ export class AuthService {
    * @param string provider
    */
   socialLogin(provider: string) {
-    return this.oAuthService.authenticate<User>(provider).pipe(
+    return this.oAuthService.authenticate<IUser>(provider).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user, 'user');
+        this.setTokenInLocalStorage(user, USER_KEY);
         return user;
       }),
       catchError(_ => {
@@ -206,7 +209,7 @@ export class AuthService {
 
   getUserToken() {
     if (isPlatformBrowser(this.platformId)) {
-      const user: User = JSON.parse(localStorage.getItem('user'));
+      const user: IUser = JSON.parse(localStorage.getItem(USER_KEY));
       return user ? user.token : null;
     } else {
       return null;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'zo-tab-bar',
@@ -7,30 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabBarComponent implements OnInit {
 
-  menus: Array<any> = [
-    {
-      name: '首页',
-      icon: 'home',
-      url: '/mobile/home',
-      active: true
-    },
-    {
-      name: '分类',
-      icon: 'th-large',
-      url: '/mobile/category',
-    },
-    {
-      name: '购物车',
-      icon: 'shopping-cart',
-      url: '/mobile/cart',
-      count: 10
-    },
-    {
-      name: '个人',
-      icon: 'user',
-      url: '/mobile/member',
-    },
-  ];
+  @Input() menus: Array<any> = [];
 
   constructor() { }
 

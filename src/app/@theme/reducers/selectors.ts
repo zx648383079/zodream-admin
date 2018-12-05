@@ -1,7 +1,7 @@
 import { AppState } from '../interfaces';
 import { createSelector } from 'reselect';
 import { AuthState } from './auth.state';
-import { User } from '../models/user';
+import { IUser } from '../models/user';
 
 // Base state function
 function getAuthState(state: AppState): AuthState {
@@ -13,7 +13,7 @@ const fetchAuthStatus = function (state: AuthState): boolean {
     return state.isAuthenticated;
 };
 
-const fetchCurrentUser = function (state: AuthState): User {
+const fetchCurrentUser = function (state: AuthState): IUser {
     return state.currentUser.toJS();
 };
 

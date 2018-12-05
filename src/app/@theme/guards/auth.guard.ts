@@ -4,6 +4,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { Store } from '@ngrx/store';
 import { AppState } from '../interfaces';
 import { getAuthStatus } from '../reducers/selectors';
+import { ThemeService } from '../services';
 
 
 @Injectable()
@@ -13,7 +14,8 @@ export class CanActivateViaAuthGuard implements CanActivate, OnDestroy {
 
   constructor(
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private theme: ThemeService
   ) {
   }
 
@@ -24,7 +26,7 @@ export class CanActivateViaAuthGuard implements CanActivate, OnDestroy {
         this.isAuthenticated = isAuthenticated;
         if (!isAuthenticated) {
           this.router.navigate(
-            ['/auth/login'],
+            [this.theme.isMobile() ? '/frontend/member/login' : '/mobile/member/login'],
             { queryParams: { returnUrl: state.url }}
           );
         }

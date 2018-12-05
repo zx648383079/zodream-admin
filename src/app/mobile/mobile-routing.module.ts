@@ -5,7 +5,11 @@ import { MobileComponent } from './mobile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
-import { SearchResultComponent } from './search/search-result/search-result.component';
+import { MemberComponent } from './member/member.component';
+import { LoginComponent } from './member/login/login.component';
+import { MobileResolver } from './mobile.resolver';
+import { CategoryComponent } from './category/category.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [{
@@ -14,12 +18,39 @@ const routes: Routes = [{
   children: [{
     path: 'home',
     component: HomeComponent,
+    resolve: {
+      cres: MobileResolver,
+    }
+  }, {
+    path: 'category',
+    component: CategoryComponent,
+    resolve: {
+      cres: MobileResolver,
+    }
+  }, {
+    path: 'cart',
+    component: CartComponent,
+    resolve: {
+      cres: MobileResolver,
+    }
   }, {
     path: 'search',
     component: SearchComponent,
+    resolve: {
+      cres: MobileResolver,
+    }
   }, {
-    path: 'search-result',
-    component: SearchResultComponent,
+    path: 'member',
+    component: MemberComponent,
+    resolve: {
+      cres: MobileResolver,
+    }
+  }, {
+    path: 'member/login',
+    component: LoginComponent,
+    resolve: {
+      cres: MobileResolver,
+    }
   }, {
     path: '',
     redirectTo: 'home',
@@ -31,7 +62,9 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes)
+  ],
   exports: [RouterModule],
 })
 export class MobileRoutingModule {
@@ -42,5 +75,8 @@ export const routedComponents = [
   NotFoundComponent,
   HomeComponent,
   SearchComponent,
-  SearchResultComponent
+  MemberComponent,
+  LoginComponent,
+  CategoryComponent,
+  CartComponent
 ];

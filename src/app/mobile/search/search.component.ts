@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { StateService } from 'src/app/@theme/services/state.service';
-import { SearchService } from 'src/app/@theme/services';
+import { SearchService, ProductService } from 'src/app/@theme/services';
+import { IProduct } from 'src/app/@theme/models/product';
 
 @Component({
   selector: 'zo-search',
@@ -18,17 +19,48 @@ export class SearchComponent implements OnInit {
 
   history_list: string[] = [];
 
-  constructor(private route: Router,
-    private state: StateService, private searchService: SearchService) {
+  search_mode = true;
 
-    }
+  current_keywords: string;
+
+  data: IProduct[] = [];
+
+  category = 0;
+
+  brand = 0;
+
+  has_more = true;
+
+  page = 1;
+
+  is_loading = false;
+
+  constructor(
+    private route: Router,
+    private searchService: SearchService,
+    private product: ProductService,
+    private activeRoute: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
-    this.state.setModeState(false);
+    this.search_mode = true;
+    this.activeRoute.queryParams.subscribe(params => {
+      this.keywords = this.current_keywords = params['keywords'];
+      this.category = params['category'];
+      this.brand = params['brand'];
+      if (this.current_keywords || this.category || this.brand) {
+        this.onGo(1);
+        this.search_mode = false;
+      }
+    });
     this.searchService.keywords().subscribe(res => {
       this.hot_keywords = res;
     });
     this.history_list = this.searchService.getHistory();
+    if (!this.history_list || typeof this.history_list !== 'object') {
+      this.history_list = [];
+    }
   }
 
   onKeyUp($event) {
@@ -37,7 +69,7 @@ export class SearchComponent implements OnInit {
     }
     if ($event.which === 13) {
       this.addHistory(this.keywords);
-      this.route.navigate(['/mobile/search-result'], {queryParams: {keywords: this.keywords}});
+      this.onGo(1);
       return;
     }
     this.searchService.tips(this.keywords).subscribe(res => {
@@ -46,7 +78,7 @@ export class SearchComponent implements OnInit {
   }
 
   addHistory(keywords: string) {
-    if (this.history_list.indexOf(keywords)) {
+    if (this.history_list.indexOf(keywords) >= 0) {
       return;
     }
     this.history_list.push(keywords);
@@ -57,11 +89,55 @@ export class SearchComponent implements OnInit {
   }
 
   tapKeyword(item: string) {
-    this.route.navigate(['/mobile/search-result'], {queryParams: {keywords: item}});
+    this.keywords = item;
+    this.onGo(1);
+  }
+
+  tapClearSearch() {
+    this.keywords = '';
+    this.tip_list = [];
+    this.search_mode = true;
   }
 
   tapClearHistory() {
     this.history_list = [];
     this.searchService.clearHistory();
+  }
+
+  onGo(page: number) {
+    if (this.is_loading) {
+      return;
+    }
+    this.search_mode = false;
+    this.is_loading = true;
+    this.current_keywords = this.keywords;
+    this.product.get({
+      keywords: this.keywords,
+      category: this.category,
+      brand: this.brand,
+      page: page,
+    }).subscribe(data => {
+      this.data = page < 2 ? data.data : [].concat(this.data, data.data);
+      this.page = page;
+      this.has_more = !data.paging.more;
+      this.is_loading = false;
+    });
+  }
+
+  tapGoSearch() {
+    this.search_mode = true;
+  }
+
+  tapBack() {
+    if (!this.current_keywords && !this.category && !this.brand) {
+      history.back();
+      return;
+    }
+    this.search_mode = false;
+    this.keywords = this.current_keywords;
+  }
+
+  onScrollEnd() {
+    this.onGo(this.page + 1);
   }
 }

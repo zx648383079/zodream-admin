@@ -1,0 +1,40 @@
+<header class="top">
+    <a class="search-entry" [routerLink]="['../search']">
+        <i class="fa fa-search"></i>
+        <span>搜索商品, 共19304款好物</span>
+    </a>
+</header>
+
+<div class="has-header has-footer category-page">
+    <div class="category-menu">
+      <ng-container *ngFor="let item of categories">
+          <div class="menu-item" [ngClass]="{'active': item.id == category.id}" (click)="tapSelected(item)">
+              {{ item.name }}
+          </div>
+      </ng-container>
+        
+    </div>
+
+    <div *ngIf="category">
+        <div class="banner">
+            <img [src]="category.banner" alt="">
+        </div>
+        <div class="header">
+            {{ category.name }}
+        </div>
+        <div class="goods-list" *ngIf="category.goods_list">
+            <div class="item-view" *ngFor="let item of category.goods_list">
+                <div class="item-img">
+                    <a ><img [src]="item.thumb" alt=""></a>
+                </div>
+                <div class="item-title">
+                    {{ item.name }}
+                </div>
+                <div class="item-actions">
+                    <span class="item-price">{{ item.price }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

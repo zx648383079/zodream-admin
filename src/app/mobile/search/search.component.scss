@@ -5,6 +5,17 @@
     }
 }
 
+.scoll-box {
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    .goods-list {
+        margin-top: 0;
+    }
+}
+
 .search-tip-box {
     display: block;
     padding-left: 10px;
