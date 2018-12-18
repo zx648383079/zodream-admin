@@ -1,4 +1,4 @@
-<li [ngClass]="{'active': menuItem.actvie, 'expand': menuItem.expand}" (click)="tapItem()">
+<li [ngClass]="{'active': menuItem.active, 'expand': menuItem.expand}" (click)="tapItem()">
     <a *ngIf="menuItem.url" [routerLink]="menuItem.url">
       <i *ngIf="menuItem.icon" [ngClass]="menuItem.icon"></i>
       <span>{{ menuItem.name }}</span>
