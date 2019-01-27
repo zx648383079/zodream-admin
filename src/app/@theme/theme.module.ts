@@ -28,7 +28,8 @@ import {
   AuthService,
   ThemeService,
   SearchService,
-  StateService
+  StateService,
+  UserService
 } from './services';
 import {
   DarkComponent
@@ -37,6 +38,7 @@ import {
   InfiniteScrollDirective
 } from './directives';
 import { CanActivateViaAuthGuard } from './guards';
+import { CartService } from './services/cart.service';
 
 const BASE_MODULES = [
   CommonModule,
@@ -65,7 +67,9 @@ const SERVICES = [
   AdService,
   ThemeService,
   StateService,
-  SearchService
+  SearchService,
+  UserService,
+  CartService
 ];
 
 const ACTIONS = [

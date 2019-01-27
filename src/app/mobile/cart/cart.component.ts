@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICart } from 'src/app/@theme/models/cart';
+import { CartService } from 'src/app/@theme/services/cart.service';
 
 @Component({
   selector: 'zo-cart',
@@ -12,9 +13,12 @@ export class CartComponent implements OnInit {
 
   data: ICart[] = [];
 
-  constructor() { }
+  constructor(private service: CartService) { }
 
   ngOnInit() {
+    this.service.get().subscribe(res => {
+      this.data = res;
+    });
   }
 
 }

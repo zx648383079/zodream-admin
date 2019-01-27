@@ -5,13 +5,13 @@
   <span class="title">
     个人中心
   </span>
-  <a class="right" href="/auth/logout">
+  <a class="right" (click)="tapLogout()">
       <i class="fa fa-sign-out-alt"></i>
   </a>
 </header>
 
 <div class="has-header has-footer">
-  <div class="user-header">
+  <div class="user-header" *ngIf="!user">
       <div class="avatar">
           <img src="{{ '/assets/images/avatar/1.png' | asset }}">
       </div>
@@ -19,6 +19,14 @@
           欢迎您，<a [routerLink]="['login']">请登陆</a>~
       </div>
   </div>
+  <div class="user-header" *ngIf="user">
+        <div class="avatar">
+            <img src="{{ user.avatar | asset }}">
+        </div>
+        <div class="name">
+            欢迎您，<a [routerLink]="['profile']">{{ user.name }}</a>~
+        </div>
+    </div>
   <div class="menu-grid">
       <a class="item">
           <i class="fa fa-users" aria-hidden="true"></i>

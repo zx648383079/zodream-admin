@@ -33,7 +33,7 @@
       <div class="goods-list">
         <div class="item-view" *ngFor="let item of data.new_products">
           <div class="item-img">
-            <a [routerLink]="['../poroduct', item.id]"><img [src]="item.thumb" alt=""></a>
+            <a [routerLink]="['../goods', item.id]"><img [src]="item.thumb" alt=""></a>
           </div>
           <div class="item-title">
             {{ item.name }}
@@ -51,7 +51,7 @@
     <div class="goods-list">
       <div class="item-view" *ngFor="let item of data.hot_products">
         <div class="item-img">
-          <a [routerLink]="['../poroduct', item.id]"><img [src]="item.thumb" alt=""></a>
+          <a [routerLink]="['../goods', item.id]"><img [src]="item.thumb" alt=""></a>
         </div>
         <div class="item-title">
           {{ item.name }}
@@ -69,7 +69,7 @@
     <div class="goods-list">
       <div class="item-view" *ngFor="let item of data.best_products">
         <div class="item-img">
-          <a [routerLink]="['../poroduct', item.id]"><img [src]="item.thumb" alt=""></a>
+          <a [routerLink]="['../goods', item.id]"><img [src]="item.thumb" alt=""></a>
         </div>
         <div class="item-title">
           {{ item.name }}

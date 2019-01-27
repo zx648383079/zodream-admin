@@ -10,6 +10,7 @@ import { LoginComponent } from './member/login/login.component';
 import { MobileResolver } from './mobile.resolver';
 import { CategoryComponent } from './category/category.component';
 import { CartComponent } from './cart/cart.component';
+import { GoodsComponent } from './goods/goods.component';
 
 
 const routes: Routes = [{
@@ -24,6 +25,12 @@ const routes: Routes = [{
   }, {
     path: 'category',
     component: CategoryComponent,
+    resolve: {
+      cres: MobileResolver,
+    }
+  }, {
+    path: 'goods/:id',
+    component: GoodsComponent,
     resolve: {
       cres: MobileResolver,
     }
@@ -78,5 +85,6 @@ export const routedComponents = [
   MemberComponent,
   LoginComponent,
   CategoryComponent,
-  CartComponent
+  CartComponent,
+  GoodsComponent
 ];

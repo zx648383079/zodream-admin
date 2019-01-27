@@ -6,3 +6,4 @@ export * from './product.service';
 export * from './theme.service';
 export * from './search.service';
 export * from './state.service';
+export * from './user.service';

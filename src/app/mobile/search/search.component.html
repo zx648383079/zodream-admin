@@ -68,7 +68,7 @@
         <div class="goods-list">
             <div class="item-view" *ngFor="let item of data">
                 <div class="item-img">
-                    <a [routerLink]="['../poroduct', item.id]"><img [src]="item.thumb" alt=""></a>
+                    <a [routerLink]="['../goods', item.id]"><img [src]="item.thumb" alt=""></a>
                 </div>
                 <div class="item-title">
                     {{ item.name }}
