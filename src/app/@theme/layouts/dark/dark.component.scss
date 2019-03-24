@@ -22,7 +22,7 @@ footer {
     position: relative;
 }
 
-.container {
+.app-container {
     width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -127,5 +127,12 @@ footer {
     .main-container {
         margin-left: 0;
         width: 100%;
+    }
+}
+
+@media (max-width: 1160px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
     }
 }

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BackendComponent } from './backend.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
+import { ActivityComponent } from './activity/activity.component';
 
 
 const routes: Routes = [{
@@ -12,6 +13,9 @@ const routes: Routes = [{
   children: [{
     path: 'home',
     component: HomeComponent,
+  }, {
+    path: 'activity',
+    component: ActivityComponent,
   }, {
   //   path: 'ui-features',
   //   loadChildren: './ui-features/ui-features.module#UiFeaturesModule',

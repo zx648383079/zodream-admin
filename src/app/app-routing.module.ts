@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'frontend', loadChildren: './frontend/frontend.module#FrontendModule' },
   { path: 'backend', loadChildren: './backend/backend.module#BackendModule' },
-  { path: 'mobile', loadChildren: './mobile/mobile.module#MobileModule' },
-  { path: '', redirectTo: 'frontend', pathMatch: 'full' },
-  { path: '**', redirectTo: 'frontend' },
+  { path: '', redirectTo: 'backend', pathMatch: 'full' },
+  { path: '**', redirectTo: 'backend' },
 ];
 
 const config: ExtraOptions = {
