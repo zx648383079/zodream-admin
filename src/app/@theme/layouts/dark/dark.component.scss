@@ -15,12 +15,20 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    .brand {
+        display: inline-block;
+    }
+    .header-right {
+        float: right;
+    }
 }
 
 footer {
     padding: 32px 20px;
     position: relative;
 }
+
+
 
 .app-container {
     width: 1200px;
@@ -31,6 +39,7 @@ footer {
 
 .app-wrapper {
     margin-top: 50px;
+    position: relative;
     .search-container {
         display: none;
     }
@@ -40,8 +49,8 @@ footer {
         pointer-events: none;
         max-width: 1920px;
         margin: 0 auto;
-        overflow: auto;
-        height: 100vh;
+        overflow: hidden;
+        height: 50vh;
         display: block;
         .search-container {
             display: block;

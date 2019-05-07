@@ -2,7 +2,8 @@ import {
   MenuItem
 } from '../@theme/components/menu-item/menu-item';
 
-export const MENU_ITEMS: MenuItem[] = [{
+export const MENU_ITEMS: MenuItem[] = [
+    {
         name: '首页',
         url: '../home',
         icon: 'fa fa-home'

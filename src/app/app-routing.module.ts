@@ -3,6 +3,7 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
 const routes: Routes = [
   { path: 'backend', loadChildren: './backend/backend.module#BackendModule' },
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
   { path: '', redirectTo: 'backend', pathMatch: 'full' },
   { path: '**', redirectTo: 'backend' },
 ];

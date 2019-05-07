@@ -14,6 +14,7 @@ export class DarkComponent implements OnInit, OnDestroy {
   @Input() menus: Array<MenuItem> = [];
 
   isExpand = false;
+  isSearch = false;
 
   constructor(private theme: ThemeService) {
     this.theme.addClass('dark-theme');
@@ -28,6 +29,10 @@ export class DarkComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.theme.removeClass('dark-theme');
+  }
+
+  tapSearch() {
+    this.isSearch = true;
   }
 
 }

@@ -1,16 +1,20 @@
 <header>
   <div class="container">
-    {{ name }}
+    <div class="brand">{{ name }}</div>
+    <div class="header-right">
+      <i class="fa fa-search" (click)="tapSearch()"></i>
+    </div>
   </div>
 </header>
-<div class="app-wrapper container">
+<div class="app-wrapper container" [ngClass]="{'search-mode': isSearch}">
+  <div class="search-container">
+    
+  </div>
   <div class="sidebar-container navbar" [ngClass]="{'expand': isExpand}">
     <span class="sidebar-container-toggle" (click)="tapExpand()"></span>
     <zo-menu [menus]="menus"></zo-menu>
   </div>
   <div id="page-content" class="main-container">
-      <ng-content select="router-outlet"></ng-content>
+    <ng-content select="router-outlet"></ng-content>
   </div>
 </div>
-
-
