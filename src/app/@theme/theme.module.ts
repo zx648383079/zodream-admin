@@ -7,6 +7,7 @@ import {
   TabBarComponent,
   MenuItemComponent,
   MenuComponent,
+  PagerComponent,
 } from './components';
 import {
   AssetPipe
@@ -50,6 +51,7 @@ const COMPONENTS = [
   MenuComponent,
   MenuItemComponent,
   DarkComponent,
+  PagerComponent,
 ];
 
 const PIPES = [

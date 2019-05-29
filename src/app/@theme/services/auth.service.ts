@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { AuthService as OauthService } from 'ng2-ui-auth';
 import { AuthActions } from '../actions/auth.actions';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { HttpRequest } from '@angular/common/http/src/request';
+import { HttpRequest } from '@angular/common/http';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 import { IUser } from '../models/user';
@@ -214,6 +214,16 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  loginFromStorage() {
+    let user: any = localStorage.getItem(USER_KEY);
+    if (!user) {
+      return;
+    }
+    user = JSON.parse(user);
+    this.store.dispatch(this.actions.getCurrentUserSuccess(user as IUser));
+    this.store.dispatch(this.actions.loginSuccess());
   }
 
 }

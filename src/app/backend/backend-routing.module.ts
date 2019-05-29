@@ -17,9 +17,9 @@ const routes: Routes = [{
     path: 'activity',
     component: ActivityComponent,
   }, {
-  //   path: 'ui-features',
-  //   loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
-  // },  {
+    path: 'goods',
+    loadChildren: './goods/goods.module#GoodsModule',
+  }, {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

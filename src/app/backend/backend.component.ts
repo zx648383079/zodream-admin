@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { MENU_ITEMS } from './backend-menu';
 
 @Component({
@@ -11,5 +11,5 @@ import { MENU_ITEMS } from './backend-menu';
 })
 export class BackendComponent {
 
-  menu = MENU_ITEMS;
+    menu = MENU_ITEMS;
 }

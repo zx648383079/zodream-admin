@@ -1,0 +1,14 @@
+<nav *ngIf="total > 1" class="pagination-nav">
+    <ul class="pagination">
+        <li class="page-item" 
+        [ngClass]="{active: getPage() == page, disabled: 0 == page}" *ngFor="let page of getPages()">
+
+            <span class="page-link" *ngIf="0 == page">...</span>
+
+            <span class="page-link" 
+            *ngIf="getPage() == page">{{ page }} <span class="sr-only">(current)</span></span>
+            <a class="page-link" href="javascript:;" 
+            (click)="paginate(page)" *ngIf="page != 0 && getPage() != page">{{ page }}</a>
+        </li>
+    </ul>
+</nav>

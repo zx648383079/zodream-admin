@@ -40,9 +40,6 @@ footer {
 .app-wrapper {
     margin-top: 50px;
     position: relative;
-    .search-container {
-        display: none;
-    }
     &.search-mode {
         transform-origin: 50vw 50vh;
         transform: perspective(1000px) translate3d(0,50vh,0) rotate3d(1,0,0,30deg);
@@ -52,10 +49,6 @@ footer {
         overflow: hidden;
         height: 50vh;
         display: block;
-        .search-container {
-            display: block;
-            pointer-events: auto;
-        }
     }
 }
 

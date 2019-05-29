@@ -2,6 +2,7 @@ import {
   MenuItem
 } from '../@theme/components/menu-item/menu-item';
 
+
 export const MENU_ITEMS: MenuItem[] = [
     {
         name: '首页',
@@ -14,7 +15,7 @@ export const MENU_ITEMS: MenuItem[] = [
         expand: true,
         chidren: [{
             name: '商品列表',
-            url: '../goods',
+            url: 'goods/list',
             icon: 'fa fa-list'
         },
         {
