@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { GoodsComponent } from './goods.component';
 import { ListComponent } from './list/list.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
     {
@@ -12,6 +13,14 @@ const routes: Routes = [
                 path: 'list',
                 component: ListComponent,
             },
+            {
+                path: 'create',
+                component: EditComponent,
+            },
+            {
+                path: 'edit/:id',
+                component: EditComponent,
+            }
         ]
     },
 ];
@@ -30,5 +39,6 @@ export class GoodsRoutingModule {
 
 export const goodsRoutedComponents = [
     GoodsComponent,
-    ListComponent
+    ListComponent,
+    EditComponent
 ];

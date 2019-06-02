@@ -38,6 +38,7 @@ import {
 } from './directives';
 import { CanActivateViaAuthGuard } from './guards';
 import { CartService } from './services/cart.service';
+import { PricePipe } from './pipes/price.pipe';
 
 const BASE_MODULES = [
   CommonModule,
@@ -55,7 +56,8 @@ const COMPONENTS = [
 ];
 
 const PIPES = [
-  AssetPipe
+  AssetPipe,
+  PricePipe
 ];
 
 const SERVICES = [
