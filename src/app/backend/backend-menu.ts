@@ -20,7 +20,7 @@ export const MENU_ITEMS: MenuItem[] = [
         },
         {
             name: '新增商品',
-            url: '../goods/create',
+            url: 'goods/create',
             icon: 'fa fa-plus'
         }]
     },

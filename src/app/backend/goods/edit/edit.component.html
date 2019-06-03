@@ -1,5 +1,5 @@
 <h1>编辑商品</h1>
-<form class="form-table" method="POST">
+<form class="form-table" method="POST" [formGroup]="goodsForm" (ngSubmit)="onSubmit()">
   <div class="tab-box">
     <div class="tab-header">
       <ng-container *ngFor="let item of tabItems; let i = index">
@@ -13,7 +13,7 @@
         <div class="input-group">
           <label for="name">商品名</label>
           <div class="">
-            <input type="text" id="name" class="form-control " name="name" placeholder="请输入 商品名" required="">
+            <input type="text" id="name" class="form-control " name="name" placeholder="请输入 商品名" formControlName="name">
 
           </div>
         </div>
@@ -188,6 +188,6 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-success btn-save">确认保存</button>
+  <button type="submit" class="btn btn-success">确认保存</button>
   <a class="btn btn-danger" href="javascript:history.go(-1);">取消修改</a>
 </form>
