@@ -17,7 +17,7 @@ export class DarkComponent implements OnInit, OnDestroy {
   isSearch = false;
 
   constructor(private theme: ThemeService) {
-    this.theme.addClass('dark-theme');
+    this.theme.addClass('dark-theme', 'full-theme');
   }
 
   ngOnInit() {
@@ -33,6 +33,10 @@ export class DarkComponent implements OnInit, OnDestroy {
 
   tapSearch() {
     this.isSearch = true;
+  }
+
+  tapCancelSearch() {
+    this.isSearch = false;
   }
 
 }

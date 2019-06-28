@@ -1,20 +1,43 @@
 <header>
   <div class="container">
     <div class="brand">{{ name }}</div>
+    <!-- <ul class="header-nav">
+        <li>
+            <i class="fa fa-home"></i>
+            <span>控制台</span>    
+        </li>
+        <li>
+            <i class="fa fa-home"></i>
+            <span>控制台</span>    
+        </li>
+    </ul> -->
     <div class="header-right">
       <i class="fa fa-search" (click)="tapSearch()"></i>
     </div>
   </div>
 </header>
 <div class="app-wrapper container" [ngClass]="{'search-mode': isSearch}">
-  <div class="search-container">
-    
+  <div class="scrollable-container">
+      <div class="sidebar-container navbar" [ngClass]="{'expand': isExpand}">
+          <span class="sidebar-container-toggle" (click)="tapExpand()"></span>
+          <div class="search-box">
+              <input type="text">
+              <i class="fa fa-times"></i>
+              <i class="fa fa-search"></i>
+          </div>
+          <zo-menu [menus]="menus"></zo-menu>
+        </div>
+        <div id="page-content" class="main-container">
+          <ng-content select="router-outlet"></ng-content>
+        </div>
   </div>
-  <div class="sidebar-container navbar" [ngClass]="{'expand': isExpand}">
-    <span class="sidebar-container-toggle" (click)="tapExpand()"></span>
-    <zo-menu [menus]="menus"></zo-menu>
-  </div>
-  <div id="page-content" class="main-container">
-    <ng-content select="router-outlet"></ng-content>
+  <div class="overlay-container">
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text">
+            <i class="fa fa-times" (click)="tapCancelSearch()"></i>
+            <i class="fa fa-search"></i>
+        </div>
+      </div>
   </div>
 </div>

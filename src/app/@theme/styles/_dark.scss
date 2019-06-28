@@ -3,20 +3,4 @@
     @import 'navbar';
     @import 'tab';
     @import 'form';
-
-    .app-wrapper {
-        .search-container {
-            display: none;
-        }
-        &.search-mode {
-            .search-container {
-                display: block;
-                pointer-events: auto;
-                position: fixed;
-                top: 10vh;
-                transform: rotate3d(1,0,0,-30deg);
-            }
-        }
-    }
 }
-

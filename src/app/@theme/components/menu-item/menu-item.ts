@@ -4,5 +4,5 @@ export interface MenuItem {
     icon?: string;
     active?: boolean;
     expand?: boolean;
-    chidren?: Array<MenuItem>;
+    children?: Array<MenuItem>;
 }

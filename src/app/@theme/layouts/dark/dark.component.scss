@@ -21,6 +21,14 @@ header {
     .header-right {
         float: right;
     }
+    .header-nav {
+        display: inline-block;
+        li {
+            padding: 0 5px;
+            list-style: none;
+            display: inline-block;
+        }
+    }
 }
 
 footer {
@@ -39,27 +47,81 @@ footer {
 
 .app-wrapper {
     margin-top: 50px;
-    position: relative;
+    .scrollable-container {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+    }
     &.search-mode {
-        transform-origin: 50vw 50vh;
-        transform: perspective(1000px) translate3d(0,50vh,0) rotate3d(1,0,0,30deg);
-        pointer-events: none;
-        max-width: 1920px;
+        .scrollable-container {
+            transform-origin: 50vw 50vh;
+            transform: perspective(1000px) translate3d(0,50vh,0) rotate3d(1,0,0,30deg);
+            pointer-events: none;
+            max-width: 1920px;
+            margin: 0 auto;
+            overflow: hidden;
+            height: 50vh;
+        }
+        .search-container {
+            display: block;
+            pointer-events: auto;
+            position: fixed;
+            top: 10vh;
+            width: 100%;
+        }
+    }
+}
+
+.search-box {
+    border-bottom: 1px solid #fff;
+    position: relative;
+    input {
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+        color: #fff;
+        height: 30px;
+        padding: 0 20px;
+    }
+    .fa {
+        position: absolute;
+        right: 0;
+        top: 8px;
+        color: #fff;
+        &.fa-search {
+            left: 0;
+            right: auto;
+        }
+    }
+}
+
+.search-container {
+    height: 200px;
+    padding-top: 50px;
+    display: none;
+    .search-box {
+        width: 400px;
         margin: 0 auto;
-        overflow: hidden;
-        height: 50vh;
-        display: block;
+        font-size: 30px;
+        input {
+            height: 50px;
+            font-size: 20px;
+            padding: 0 40px;
+        }
+        .fa {
+            top: 13px;
+        }
     }
 }
 
 .sidebar-container {
+    order: 0;
     width: 208px;
-    vertical-align: baseline;
     padding: 20px 12px 60px 36px;
     top: auto;
-    position: absolute;
     overflow-y: visible;
-    display: inline-block;
+    display: block;
     .sidebar-container-toggle {
         display: none;
         font-family: "Font Awesome 5 Free";
@@ -70,37 +132,51 @@ footer {
             content: "\f0c9";
         }
     }
+    
 }
 
 .main-container {
-    width: calc(100% - 208px);
-    position: relative;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
     vertical-align: baseline;
     background-color: #f4f4f4;
-    flex-grow: unset;
-    display: inline-block;
     top: 0;
     padding: 8px;
     min-height: 300px;
-    margin-left: 208px;
+}
+
+:host-context(.full-theme) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 1200px){
     .container {
         width: 100%;
     }
-
 }
 
 @media (max-width: 767px){
     .app-wrapper {
         min-height: calc(100vh - 50px);
+        width: 100vw;
+        overflow: hidden;
+        margin: 50px 0 0;
+        padding: 0;
+        .scrollable-container {
+            display: block;
+            position: relative;
+        }
     }
     .sidebar-container {
         left: -208px;
         transition: left .3s;
         z-index: 189;
         bottom: 0;
+        position: absolute;
         .sidebar-container-toggle {
             display: block;
             position: fixed;
@@ -129,6 +205,27 @@ footer {
     .main-container {
         margin-left: 0;
         width: 100%;
+    }
+
+    :host-context(.full-theme) {
+        .main-container {
+            transition: all .3s;
+        }
+        .sidebar-container {
+            &.expand {
+                box-shadow: none;
+                &+.main-container {
+                    transform: translateX(208px);
+                }
+            }
+        }
+    }
+    .search-container {
+        height: 60vh;
+        padding-top: 15vh;
+        .search-box {
+            width: 100%;
+        }
     }
 }
 

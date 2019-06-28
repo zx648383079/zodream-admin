@@ -9,12 +9,12 @@ export class ThemeService {
     this.body = document.body;
   }
 
-  public addClass(tag: string) {
-    this.body.classList.add(tag);
+  public addClass(...tags: string[]) {
+    this.body.classList.add(...tags);
   }
 
-  public removeClass(tag: string) {
-    this.body.classList.remove(tag);
+  public removeClass(...tags: string[]) {
+    this.body.classList.remove(...tags);
   }
 
   public isMobile(): boolean {

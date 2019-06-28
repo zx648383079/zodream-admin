@@ -19,7 +19,7 @@ export class MenuItemComponent implements OnInit {
 
   tapItem() {
     this.menuItem.active = !this.menuItem.active;
-    if (this.menuItem.chidren) {
+    if (this.menuItem.children) {
       this.menuItem.expand = !this.menuItem.expand;
     }
     this.selectItem.emit(this.menuItem);
