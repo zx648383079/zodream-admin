@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   {
@@ -15,9 +16,9 @@ const routes: Routes = [
       path: 'register',
       component: RegisterComponent,
     }, {
-    //   path: 'ui-features',
-    //   loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
-    // },  {
+      path: 'logout',
+      component: LogoutComponent,
+    },  {
       path: '',
       redirectTo: 'login',
       pathMatch: 'full',

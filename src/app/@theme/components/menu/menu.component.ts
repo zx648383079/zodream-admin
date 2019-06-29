@@ -17,11 +17,8 @@ export class MenuComponent implements OnInit {
 
   tapItem(item: MenuItem) {
     this.menus.forEach(i => {
-      if (item === i) {
-        return;
-      }
-      i.active = false;
-      i.expand = false;
+      i.active = item === i;
+      i.expand = item === i && i.children && i.children.length > 0;
     });
   }
 

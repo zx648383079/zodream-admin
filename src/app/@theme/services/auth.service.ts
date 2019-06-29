@@ -69,7 +69,7 @@ export class AuthService {
    */
   register(data: IUser): Observable<IUser> {
     const params = { data: { type: 'user', attributes: data } };
-    return this.http.post<IUser>('api/v1/register', params).pipe(
+    return this.http.post<IUser>('auth/register', params).pipe(
       map(user => {
         return user;
       }),
@@ -144,7 +144,7 @@ export class AuthService {
    *
    */
   logout() {
-    return this.http.post('api/v1/logout', {}).pipe(
+    return this.http.post('auth/logout', {}).pipe(
       map((res: Response) => {
         if (isPlatformBrowser(this.platformId)) {
           localStorage.clear();

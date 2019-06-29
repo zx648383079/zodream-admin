@@ -36,6 +36,47 @@ footer {
     position: relative;
 }
 
+.profile-box {
+    display: inline-block;
+    position: relative;
+    margin-left: 10px;
+    .info {
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        span {
+            display: none;
+        }
+    }
+    .down-menu {
+        position: absolute;
+        margin-left: -70px;
+        width: 120px;
+        background-color: #333;
+        color: #fff;
+        ::ng-deep {
+            a {
+                color: #fff;
+                text-decoration: none;
+                .fa {
+                    margin-right: 5px;
+                }
+            }
+            ul {
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                li {
+                    list-style: none;
+                }
+            }
+        }
+        
+    }
+}
+
 
 
 .app-container {
@@ -163,7 +204,7 @@ footer {
     .app-wrapper {
         min-height: calc(100vh - 50px);
         width: 100vw;
-        overflow: hidden;
+        overflow-x: hidden;
         margin: 50px 0 0;
         padding: 0;
         .scrollable-container {
@@ -176,7 +217,9 @@ footer {
         transition: left .3s;
         z-index: 189;
         bottom: 0;
-        position: absolute;
+        overflow-y: auto;
+        position: fixed;
+        top: 50px;
         .sidebar-container-toggle {
             display: block;
             position: fixed;

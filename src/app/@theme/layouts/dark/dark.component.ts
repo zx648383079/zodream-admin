@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Inject, OnDestroy, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { MenuItem } from '../../components/menu-item/menu-item';
 import { ThemeService } from '../../services';
+import { IUser } from '../../models/user';
 
 @Component({
   selector: 'zo-dark-layout',
@@ -13,8 +14,13 @@ export class DarkComponent implements OnInit, OnDestroy {
 
   @Input() menus: Array<MenuItem> = [];
 
-  isExpand = false;
-  isSearch = false;
+  @Input() userMenus: Array<MenuItem> = [];
+
+  @Input() user: IUser;
+
+  public isExpand = false;
+  public isSearch = false;
+  public isDownMenu = false;
 
   constructor(private theme: ThemeService) {
     this.theme.addClass('dark-theme', 'full-theme');
@@ -39,4 +45,7 @@ export class DarkComponent implements OnInit, OnDestroy {
     this.isSearch = false;
   }
 
+  tapDownMenu() {
+    this.isDownMenu = !this.isDownMenu;
+  }
 }

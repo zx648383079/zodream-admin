@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { BackendComponent } from './backend.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
-import { ActivityComponent } from './activity/activity.component';
+import { shopRoutes } from './shop/shop-routes.routing';
+import { authRoutes } from './auth/auth-routes.routing';
 
 
 const routes: Routes = [{
@@ -13,12 +14,12 @@ const routes: Routes = [{
   children: [{
     path: 'home',
     component: HomeComponent,
-  }, {
-    path: 'activity',
-    component: ActivityComponent,
-  }, {
-    path: 'goods',
-    loadChildren: './goods/goods.module#GoodsModule',
+  },
+  ...authRoutes,
+  ...shopRoutes,
+  {
+    path: 'system',
+    loadChildren: './system/system.module#SystemModule',
   }, {
     path: '',
     redirectTo: 'home',

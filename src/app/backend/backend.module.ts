@@ -5,7 +5,6 @@ import { BackendRoutingModule } from './backend-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { ThemeModule } from '../@theme/theme.module';
-import { ActivityComponent } from './activity/activity.component';
 
 @NgModule({
   imports: [
@@ -13,6 +12,6 @@ import { ActivityComponent } from './activity/activity.component';
     ThemeModule,
     BackendRoutingModule
   ],
-  declarations: [BackendComponent, NotFoundComponent, HomeComponent, ActivityComponent]
+  declarations: [BackendComponent, NotFoundComponent, HomeComponent]
 })
 export class BackendModule { }

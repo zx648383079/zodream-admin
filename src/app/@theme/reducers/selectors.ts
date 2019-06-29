@@ -14,7 +14,7 @@ const fetchAuthStatus = function (state: AuthState): boolean {
 };
 
 const fetchCurrentUser = function (state: AuthState): IUser {
-    return state.currentUser.toJS();
+    return state.currentUser;
 };
 
 
