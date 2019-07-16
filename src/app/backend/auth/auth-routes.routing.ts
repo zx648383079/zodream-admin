@@ -2,7 +2,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { MenuItem } from 'src/app/@theme/components/menu-item/menu-item';
 
 export const authRoutes: Routes = [
-
+  {
+    path: 'account',
+    loadChildren: './auth/account/account.module#AccountModule',
+  },
 ];
 
 export const AUTH_MENU: MenuItem[] = [
@@ -56,23 +59,23 @@ export const AUTH_MENU: MenuItem[] = [
 export const AUTH_DOWN_MENU: MenuItem[] = [{
   name: '个人资料',
   icon: 'fa fa-info-circle',
-  url: './admin/account'
+  url: './account/profile'
 }, {
   name: '账号关联',
   icon: 'fa fa-link',
-  url: './admin/account/connect'
+  url: './account/connect'
 }, {
   name: '更改密码',
   icon: 'fa fa-key',
-  url: './admin/account/password'
+  url: './account/password'
 }, {
   name: '登陆记录',
   icon: 'fa fa-calendar-alt',
-  url: './admin/account/login_log'
+  url: './account/login_log'
 }, {
   name: '操作记录',
   icon: 'fa fa-calendar',
-  url: './admin/account/log'
+  url: './account/log'
 }, {
   name: '退出登陆',
   icon: 'fa fa-sign-out-alt',
