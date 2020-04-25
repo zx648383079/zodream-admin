@@ -147,5 +147,8 @@
       }
     }
   },
-  "defaultProject": "zodream-admin"
+  "defaultProject": "zodream-admin",
+  "cli": {
+    "analytics": "369095d4-de56-4797-91a8-7ca43ed59a02"
+  }
 }
